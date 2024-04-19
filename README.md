@@ -11,7 +11,7 @@ pip install .
 ## Usage
 
 ### Revised Autocorrelation (RAC) features
-RAC features are implemented based on the following paper: https://pubs.acs.org/doi/full/10.1021/acs.jpca.7b08750
+RAC features are implemented based on the following paper: https://pubs.acs.org/doi/full/10.1021/acs.jpca.7b08750. Please credit the authors and this Github repo if you use this implementation.
 
 RAC features map a molecular graph to a numerical vector. They are great if you need a numerical representation of a molecular graph for a machine learning model like a Random Forest. They work similar to a Graph Neural Network, but they don't train any weights and instead just sum all values, which makes them much simpler to use. They return a feature vector which can be used for example for scikit-learn machine learning models. Importantly, the current implementation does not support user-defined node properties or bond properties, but it would be possible to implement them if necessary.
 
@@ -50,4 +50,4 @@ The output of the code snippet above is:
 ```
 
 # License
-This project is licensed under the MIT License - see the LICENSE file for details. This means that you can use this code for free for any purpose, but you should not hold the authors liable for anything.
+This project is licensed under the MIT License - see the LICENSE file for details. This means that you can use this code for free for any purpose, but the authors of this package cannot be hold responsible for anything.
