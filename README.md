@@ -13,7 +13,9 @@ pip install .
 ### Revised Autocorrelation (RAC) features
 RAC features are implemented based on the following paper: https://pubs.acs.org/doi/full/10.1021/acs.jpca.7b08750
 
-RAC features are great if you need a numerical representation of a graph (like example a molecule) for a machine learning model. The representation takes into account the connectivity (bonds) between the atoms and the atom types of each atom. The RAC features here use multiple atomic properties such as electronegativity, atomic number, and atomic mass to calculate the autocorrelation of a graph. The RAC features are calculated up to a certain depth (e.g. 4 as a good default), which is a hyperparameter that can be set by the user. The RAC features are calculated for each depth and for each atomic property. In order to normalize the RAC features so that they have the same length no matter the number of nodes in the graph, 4 different statistical measures are applied to each atomic property, sum, std, min and max. The original implementation in the paper above uses only the sum, this was generalized here. The RAC features are calculated for the following atomic properties:
+RAC features map a molecular graph to a numerical vector. They are great if you need a numerical representation of a molecular graph for a machine learning model like a Random Forest. They work similar to a Graph Neural Network, but they don't train any weights and instead just sum all values, which makes them much simpler to use. They return a feature vector which can be used for example for scikit-learn machine learning models. Importantly, the current implementation does not support user-defined node properties or bond properties, but it would be possible to implement them if necessary.
+
+The representation takes into account the connectivity (bonds) between the atoms and the atom types of each atom. The RAC features here use multiple atomic properties such as electronegativity, atomic number, and atomic mass to calculate the autocorrelation of a graph. The RAC features are calculated up to a certain depth (e.g. 4 as a good default), which is a hyperparameter that can be set by the user. The RAC features are calculated for each depth and for each atomic property.  In order to normalize the RAC features so that they have the same length no matter the number of nodes in the graph, 4 different statistical measures are applied to each atomic property, sum, std, min and max. The original implementation in the paper above uses only the sum, this was generalized here. The RAC features are calculated for the following atomic properties:
 - electronegativity
 - row
 - group
@@ -49,4 +51,3 @@ The output of the code snippet above is:
 
 # License
 This project is licensed under the MIT License - see the LICENSE file for details. This means that you can use this code for free for any purpose, but you should not hold the authors liable for anything.
-
