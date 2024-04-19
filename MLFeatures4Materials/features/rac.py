@@ -232,12 +232,15 @@ if __name__ == '__main__':
     G.add_nodes_from([(0, {'node_label': 'C'}),
                       (1, {'node_label': 'H'})])
     G.add_edges_from([(0, 1)])
-    own_result, labels = RAC(depth=4).molecule_autocorrelation(graph=G, return_labels=True)
-    own_result = list(own_result)
+    features, labels = RAC(depth=4).molecule_autocorrelation(graph=G, return_labels=True)
+    features = list(features)
 
-    df = pd.DataFrame({'own': own_result}, index=labels)
+    df = pd.DataFrame({'own': features}, index=labels)
 
     average_rac = df['own'].mean()
     print(f'Average RAC: {average_rac}')
+
+    print('Features:', features)
+    print('Labels:', labels)
 
     print('Done!')
